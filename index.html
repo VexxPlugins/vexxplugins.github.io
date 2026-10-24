@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vexx Audio · plugins I built because I could not afford them</title>
+<meta name="description" content="Vexx Audio is a one-person label: audio processors written from scratch and given away, with the source open. Retroexx is the first.">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0b0c0f" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Vexx Audio">
+<meta property="og:description" content="Audio processors written from scratch and given away. Retroexx is the first.">
+<meta property="og:image" content="https://vexxplugins.github.io/assets/retroexx-preview.jpg">
+<link rel="icon" href="assets/logomark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/style.css">
+<script>
+  // Sets the theme before first paint: a stored choice, else the system one.
+  (function () {
+    var d = document.documentElement;
+    d.classList.add("js");
+    var stored = null;
+    try { stored = localStorage.getItem("theme"); } catch (e) {}
+    d.dataset.theme = stored || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+  })();
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-head">
+  <div class="wrap head-inner">
+    <a class="brand" href="./">
+      <img src="assets/logomark.svg" width="34" height="34" alt="">
+      <span class="brand-text">
+        <span class="brand-name">VEXX AUDIO</span>
+        <span class="brand-sub">Audio processors</span>
+      </span>
+    </a>
+    <nav class="site-nav" aria-label="Sections">
+      <a href="#plugins">Plugins</a>
+      <a href="#why">Why</a>
+      <a href="https://github.com/VexxPlugins/retroexx">Source</a>
+    </nav>
+    <button class="theme-toggle" type="button" aria-label="Switch to dark theme">
+      <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+      </svg>
+      <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true">
+        <circle cx="12" cy="12" r="4"/>
+        <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>
+      </svg>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="hero wrap">
+    <h1>I built the plugins I could not afford.</h1>
+    <p class="lead">
+      Vexx Audio is a one-person label: audio processors written from scratch and given away. No
+      account, no licence key, no trial timer.
+    </p>
+    <p class="hero-cta">
+      <a class="btn" href="retroexx/">See Retroexx</a>
+      <a class="link-quiet" href="#why">Why it is free</a>
+    </p>
+  </section>
+
+  <section class="wrap products" id="plugins">
+    <h2>Plugins</h2>
+    <article class="card">
+      <img src="assets/retroexx-preview.jpg" width="640" height="494"
+           alt="The Retroexx editor: six module columns with their screens and knobs, a preset window in the header and a master strip at the bottom.">
+      <div>
+        <h3>Retroexx</h3>
+        <p>
+          A character, noise and space processor for macOS in AU and VST3. Six modules in series, a
+          master strip, and an interface that reports itself: every screen shows the value of the
+          control under your mouse, or a visualiser built from the module's own audio.
+        </p>
+        <p class="small">Version 0.1 · AU and VST3 · 58 host parameters · ten factory presets</p>
+        <p class="card-links">
+          <a href="retroexx/">Open the page</a>
+          <a href="https://github.com/VexxPlugins/retroexx">Source</a>
+        </p>
+      </div>
+    </article>
+  </section>
+
+  <section class="wrap why" id="why">
+    <h2>Why this exists</h2>
+    <p class="measure">
+      Growing up I spent a lot of time looking at plugins I could not have. The ones with the good
+      panels, the ones everyone used. I did not have the money, and for a long while I did not have
+      the skill either.
+    </p>
+    <p class="measure">
+      At some point I stopped waiting and learned to write them. Vexx Audio is the result: my own
+      processors, given away with the source open, because I remember what it was like to want them
+      and not have them.
+    </p>
+    <p class="pull">No account. No licence key. No trial timer.</p>
+  </section>
+
+</main>
+
+<footer class="site-foot">
+  <div class="wrap foot-inner">
+    <p>
+      <strong>Vexx Audio</strong>, 2026. All plugins are free to use and their source is open under
+      <a href="https://github.com/VexxPlugins/retroexx/blob/main/LICENSE">AGPL-3.0-or-later</a>.
+    </p>
+    <p class="small">
+      Orbitron and Rajdhani are used under the SIL Open Font License. Built with JUCE.
+    </p>
+    <p class="small">
+      <a href="retroexx/">Retroexx</a> ·
+      <a href="https://github.com/VexxPlugins/retroexx">Source</a> ·
+      <a href="https://github.com/VexxPlugins/retroexx/blob/main/DESIGN.md">Design notes</a>
+    </p>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var d = document.documentElement;
+    var b = document.querySelector(".theme-toggle");
+    function label() {
+      b.setAttribute("aria-label", d.dataset.theme === "dark" ? "Switch to light theme" : "Switch to dark theme");
+    }
+    label();
+    b.addEventListener("click", function () {
+      d.dataset.theme = d.dataset.theme === "dark" ? "light" : "dark";
+      try { localStorage.setItem("theme", d.dataset.theme); } catch (e) {}
+      label();
+    });
+  })();
+</script>
+
+</body>
+</html>
